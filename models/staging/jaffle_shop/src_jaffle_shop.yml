@@ -4,6 +4,21 @@ sources:
   - name: jaffle_shop
     database: dbt-tutorial
     schema: jaffle_shop
+    description: Clone of a Postgres database
     tables:
       - name: customers
+        description: Raw table with details of customers
+        columns:
+          - name: id
+            description: The primary key of the customers table
+            tests:
+              - unique
+              - not_null
       - name: orders
+        description: Raw table with details of orders
+        columns:
+          - name: id
+            description: The primary key of the orders table
+            tests:
+              - unique
+              - not_null
