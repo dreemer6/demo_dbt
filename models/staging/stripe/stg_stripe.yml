@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: Staged customer payments data from Stripe
+    columns:
+      - name: payment_id
+        description: Primary key for payments
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        description: "{{ doc('payment_method') }}"
+        tests:
+          - accepted_values:
+              values:
+                - credit_card
+                - bank_transfer
+                - coupon
+                - gift_card
+          
