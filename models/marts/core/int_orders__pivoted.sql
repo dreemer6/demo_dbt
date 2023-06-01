@@ -5,6 +5,7 @@ with
     pivoted as (
         select
             order_id,
+            sum(amount) as total_amount,
             {%- for payment_method in payment_methods %}
                 sum(
                     case when payment_method = '{{ payment_method}}' then amount else 0 end
